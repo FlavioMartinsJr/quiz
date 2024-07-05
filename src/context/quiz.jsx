@@ -1,11 +1,11 @@
 import { createContext, useReducer } from "react";
-import questions from "../data/questions_complete";
+import data from "../data/questionsComplete.js";
 
 const STAGES = ["Start", "Category", "Playing", "End"];
 
 const initialState = {
   gameStage: STAGES[0],
-  questions,
+  data,
   currentQuestion: 0,
   answerSelected: false,
   score: 0,
@@ -13,7 +13,7 @@ const initialState = {
   optionToHide: null,
 };
 
-console.log(initialState);
+// console.log(initialState);
 
 const quizReducer = (state, action) => {
   switch (action.type) {
@@ -24,6 +24,7 @@ const quizReducer = (state, action) => {
       };
 
     case "START_GAME":
+      // eslint-disable-next-line no-case-declarations
       let quizQuestions = null;
 
       state.questions.forEach((question) => {
@@ -39,6 +40,7 @@ const quizReducer = (state, action) => {
       };
 
     case "REORDER_QUESTIONS":
+      // eslint-disable-next-line no-case-declarations
       const reorderedQuestions = state.questions.sort(() => {
         return Math.random() - 0.5;
       });
@@ -66,7 +68,7 @@ const quizReducer = (state, action) => {
     }
 
     case "NEW_GAME": {
-      console.log(questions);
+      console.log(data);
       console.log(initialState);
       return initialState;
     }
@@ -125,6 +127,7 @@ const quizReducer = (state, action) => {
 
 export const QuizContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 export const QuizProvider = ({ children }) => {
   const value = useReducer(quizReducer, initialState);
 

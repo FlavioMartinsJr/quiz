@@ -1,4 +1,4 @@
-const data = [
+ const dataComplete = [
     {
       category: "HTML",
       questions: [
@@ -90,4 +90,4 @@ const data = [
     },
   ];
   
-  export default data;
+  export default dataComplete;
